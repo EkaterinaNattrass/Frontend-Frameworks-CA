@@ -1,0 +1,10 @@
+.HomePage {
+    background-image: url(../public/items.jpg);
+    background-size: cover;
+    height: sum(100vh - 20px) ;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
