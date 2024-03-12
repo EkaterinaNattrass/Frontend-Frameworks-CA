@@ -1,10 +1,52 @@
+* {
+    margin: 0;
+}
+
+header {
+    padding: 5px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.Navlink {
+    color: #404040;
+    text-decoration: none;
+    padding-right: 20px;
+}
+
+.Navlink:hover, .Footlink:hover {
+    color: purple;
+}
+
+.Footlink {
+    color: #404040;
+    text-decoration: none;
+    padding-top: 10px;
+}
+
+footer {
+    color: #404040;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
 .HomePage {
     background-image: url(../public/items.jpg);
     background-size: cover;
-    height: sum(100vh - 20px) ;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    color: white;
 }
+
+
+
+
+
+
