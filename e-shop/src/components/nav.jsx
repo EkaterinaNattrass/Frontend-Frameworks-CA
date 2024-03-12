@@ -1,9 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { NavLink } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { FaPerson } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
+import { FaCommentDots } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 
 export default function Nav() {
@@ -11,17 +11,17 @@ export default function Nav() {
     <header>
       <nav>
           <Box>
-          <NavLink to="/home" className="Navlink">
+          <NavLink to="/" className="Navlink">
         < FaHome size={20}/>
       </NavLink>
-      <NavLink to="/account" className="Navlink">
-        <FaPerson size={20} />
+      <NavLink to="/contact" className="Navlink">
+        <FaCommentDots size={20} />
       </NavLink>
       <NavLink to="/favourite" className="Navlink">
         <FaHeart size={20} />
       </NavLink>
       <NavLink to="/cart" className="Navlink">
-        <FaShoppingCart size={20}/>
+        <FaCartShopping size={20}/>
       </NavLink>
     </Box>
       </nav>

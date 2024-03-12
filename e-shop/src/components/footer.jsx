@@ -11,51 +11,54 @@ export default function Footer() {
         <Typography variant="h5" sx={{ mb: 6 }}>
           About
         </Typography>
-        <p>
+        <div>
           {" "}
           <Typography variant="subtitle1">Our story</Typography>
-        </p>
-        <p>
+        </div>
+        <div>
           {" "}
           <Typography variant="subtitle1">Our team</Typography>
-        </p>
-        <p>
+        </div>
+        <div>
           {" "}
           <Typography variant="subtitle1">Career</Typography>
-        </p>
+        </div>
       </div>
       <div>
         <Typography variant="h5" sx={{ mb: 6 }}>
           Company
         </Typography>
-        <p>
+        <div>
           {" "}
           <Typography variant="subtitle1">Our services</Typography>
-        </p>
-        <p>
+        </div>
+        <div>
           {" "}
           <Typography variant="subtitle1">Delivery</Typography>
-        </p>
-        <p>
+        </div>
+        <div>
           {" "}
-          <Typography variant="subtitle1"><NavLink to="/contact" className="Footlink">Contacts </NavLink></Typography>
-        </p>
+          <Typography variant="subtitle1">
+            <NavLink to="/contact" className="Footlink">
+              Contacts{" "}
+            </NavLink>
+          </Typography>
+        </div>
       </div>
-      
       <div>
-      <Typography variant="h5" sx={{ mb: 6 }}>
+        <Typography variant="h5" sx={{ mb: 6 }}>
           Social Media
         </Typography>
-        <p>
+        <div>
           <Link to="https://www.facebook.com/" className="Footlink">
             <FaFacebook size={20} />
           </Link>
-        </p>
-        <p>
+        </div>
+        <div>
           <Link to="https://www.instagram.com/" className="Footlink">
             <FaInstagramSquare size={20} />
           </Link>
-        </p>
+        </div>
       </div>
     </footer>
   );

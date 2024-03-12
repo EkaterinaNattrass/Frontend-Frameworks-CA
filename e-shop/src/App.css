@@ -45,6 +45,11 @@ footer {
     color: white;
 }
 
+.ProductsContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
 
 
 
