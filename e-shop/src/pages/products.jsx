@@ -55,7 +55,7 @@ export default function Products() {
                           </Typography>
                         </CardContent>
                         <CardActions>
-                          <Link to={`/posts/${product.id}`}>
+                          <Link to={`/products/${product.id}`}>
                             <Button
                               variant="outlined"
                               color="secondary"
