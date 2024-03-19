@@ -49,6 +49,11 @@ footer {
     padding: 30px;
 }
 
+.CartContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
 
 

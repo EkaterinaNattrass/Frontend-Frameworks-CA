@@ -8,11 +8,12 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { FaCartShopping } from "react-icons/fa6";
 
 export default function Details() {
   const [product, setProduct] = useState({});
+//   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const { id } = useParams();
   const API_URL = "https://v2.api.noroff.dev/online-shop/" + id;
@@ -20,21 +21,20 @@ export default function Details() {
   useEffect(() => {
     async function getProduct() {
       try {
-        setIsLoading(true);
         const response = await fetch(API_URL);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
         const result = await response.json();
         const APIdata = result.data;
-        setIsLoading(false);
+        console.log(APIdata)
         setProduct(APIdata);
       } catch (err) {
         setError("Sorry, something went wrong");
       }
     }
     getProduct();
-  }, [API_URL]);
+  });
 
   return (
     <div className="ProductContainer">
@@ -45,57 +45,59 @@ export default function Details() {
             Back to the products
           </Button>
         </Link>
-      ) :
-      isLoading ? (
-        <Typography gutterBottom variant="body1" color="text.secondary">
-          Loading...
-        </Typography>
       ) : (
         <Box sx={{ flexGrow: 1, p: 6 }}>
           <Grid container spacing={6}>
-            <Card key={product.id} sx={{ maxWidth: 600, p: 6 }}>
-              <CardMedia
-                component="img"
-                sx={{ height: 200 }}
-                // image={product.image.url}
-                title="image of a product"
-              />
+            <Card key={id} sx={{ maxWidth: 800, p: 6, m:5 }}>
+            <CardMedia
+                          sx={{ height: 400 }}
+                     image src={product.image}
+                        //   title={product.image.alt}
+                        />
               <CardContent>
-                <Typography gutterBottom variant="h4" component="div">
+                <Typography gutterBottom color="#404040" variant="h4" component="div">
                   {product.title}
                 </Typography>
-                <Typography variant="body1" color="text.secondary">
+               <Typography variant="body1" color="text.secondary">
                   {product.description}
                 </Typography>
                 <Typography
                   sx={{ mt: 2 }}
                   gutterBottom
-                  variant="body2"
+                  variant="h6"
                   color="text.secondary"
                 >
                   {product.price}
                 </Typography>
-                <Typography
+              <Typography
                   sx={{ mt: 2 }}
                   gutterBottom
-                  variant="body2"
+                  variant="h6"
                   color="text.secondary"
                 >
                  Only now!!! {product.discountedPrice}
                 </Typography>
+             {/*   <Typography
+                  sx={{ mt: 2 }}
+                  gutterBottom
+                  variant="h6"
+                  color="text.secondary"
+                >
+                 {product.reviews}
+                </Typography> */}
               </CardContent>
               <CardActions>
                 <div className="ButtonContainer">
                   <Link to={"/products"}>
-                    <Button variant="outlined" color="secondary">
+                    <Button variant="outlined" color="secondary" sx={{ mr: 2 }}>
                       Back to the products
                     </Button>
                   </Link>
                   <Button variant="contained" color="secondary">
-                      Add to Cart
+                  <FaCartShopping size={15} /> Add to Cart
                     </Button>
                 </div>
-              </CardActions>
+              </CardActions> 
             </Card>
           </Grid>
         </Box>

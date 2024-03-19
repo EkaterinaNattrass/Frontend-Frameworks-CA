@@ -6,7 +6,7 @@ import { FaHeart } from "react-icons/fa6";
 import { FaCommentDots } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 
-export default function Nav() {
+export default function Header() {
   return (
     <header>
       <nav>
