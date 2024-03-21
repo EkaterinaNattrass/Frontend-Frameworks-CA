@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-//import ImageFull from "../components/imageFull";
+import ImageFull from "../components/imageFull";
 import { FaCartShopping } from "react-icons/fa6";
 import Title from "../components/title";
 import DescriptionFull from "../components/descriptionFull";
@@ -35,10 +35,12 @@ export default function Details() {
       }
     }
     getProduct();
-  }, [API_URL]);
+  }, []);
 
   const hasDiscount = product.discountedPrice;
-
+  //console.log(product.image.url);
+  console.log(product);
+  
   return (
     <div className="ProductContainer">
       {error ? (
@@ -52,7 +54,7 @@ export default function Details() {
         <Box sx={{ flexGrow: 1, p: 6 }}>
           <Grid container spacing={6}>
             <Card key={id} sx={{ maxWidth: 800, p: 6, m: 5 }}>
-              {/* < ImageFull val={product.image.url} /> */}
+               < ImageFull val={product.image?.url} />
               <CardContent>
                 <Title val={product.title} />
                 <DescriptionFull val={product.description} />
@@ -78,15 +80,10 @@ export default function Details() {
                 <div className="ButtonContainer">
                   <Link to={"/products"}>
                     <SecondaryButton val={"Back to the products"} />
-                  </Link><Button variant="contained" color="secondary">
-                      <FaCartShopping size={15} /> Add to Cart
-                    </Button>
-                    <div>
-                      <Link to={"/cart"}>
-                    < SecondaryButton val={<FaCartShopping size={15}/>}/>
-                  </Link> 
-                    </div>
-                 
+                  </Link>
+                  <Button variant="contained" color="secondary">
+                    <FaCartShopping size={15} /> Add to Cart
+                  </Button>
                 </div>
               </CardActions>
             </Card>

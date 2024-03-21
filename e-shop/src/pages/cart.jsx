@@ -1,56 +1,49 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import { FaArrowLeft } from "react-icons/fa";
-import Grid from "@mui/material/Unstable_Grid2";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
-import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
+import PrimaryButton from "../components/primaryButton";
+import SecondaryButton from "../components/secondaryButton";
+import Title from "../components/title";
+import Price from "../components/price";
+import { CiDeliveryTruck } from "react-icons/ci";
 
 export default function Cart() {
   return (
     <>
       <NavLink to="/products">
-        <Button variant="outlined" color="secondary" sx={{ m: 5 }}>
-          <FaArrowLeft /> Continue Shopping
-        </Button>
+        <SecondaryButton val={"Back to the products"} />
       </NavLink>
-
-      <Typography variant="subtitle2" component="div" sx={{ m: 5 }} >
-        For members: Free delivery with all orders
-      </Typography>
-      <Grid container>
-        <div className="CartContainer">
-          <Card sx={{ maxWidth: 800, p: 6, m: 5 }}>
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                Shopping Cart
-              </Typography>
-              <MdDelete size={20} />
-            </CardContent>
-          </Card>
-          <Card sx={{ maxWidth: 800, p: 6, m: 5 }}>
-            <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
-                Total :
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                Delivery : 0
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                Sum :
-              </Typography>
-              <NavLink to="/checkout">
-               <Link to={'/checkout'} ><Button variant="contained" color="secondary" sx={{ m: 5 }}>
-                  Checkout
-                </Button></Link>
-              </NavLink>
-            </CardContent>
-          </Card>
-        </div>
-      </Grid>
+      <div className="OfferContainer">
+        <Typography variant="body2" component="div" sx={{ m: 3 }}>
+          <CiDeliveryTruck />
+          <span className="SpecialOffer">
+            Spring offer: Free delivery on all orders
+          </span>
+          <CiDeliveryTruck />
+        </Typography>
+      </div>
+      <div className="CartContainer">
+        <Card sx={{ maxWidth: 800, p: 6, m: 5 }}>
+          <CardContent>
+            <Title val={"Shopping Cart"} />
+          </CardContent>
+       
+          <CardContent>
+            < Price val={'Sum:'}/>
+            < Price val={'Delivery: 0'}/>
+            < Price val={'Total:'}/>
+            <NavLink to="/checkout">
+              <Link to={"/checkout"}>
+                <PrimaryButton val={"Checkout"} />
+              </Link>
+            </NavLink>
+          </CardContent>
+        </Card>
+      </div>
     </>
   );
 }

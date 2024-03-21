@@ -49,20 +49,34 @@ footer {
     padding: 30px;
 }
 
+.ProductContainer {
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .CartContainer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    height: 95vh;
 }
 
 .SuccessContainer {
-    height: 70vh;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.SpecialOffer {
+    padding: 10px;
+}
+
+.OfferContainer {
+    text-align: center;
+}
 
 
 

@@ -11,7 +11,7 @@ import Image from "../components/image";
 import Title from "../components/title";
 import Price from "../components/price";
 import Description from "../components/description";
-import SecondaryButton from "../components/secondaryButton";
+import PrimaryButton from "../components/primaryButton";
 const API_URL = "https://v2.api.noroff.dev/online-shop";
 
 export default function Products() {
@@ -82,7 +82,7 @@ export default function Products() {
                   </CardContent>
                   <CardActions>
                     <Link to={`/products/${product.id}`}>
-                      <SecondaryButton val={"View product"} />
+                      <PrimaryButton val={"View product"} />
                     </Link>
                   </CardActions>
                 </Card>

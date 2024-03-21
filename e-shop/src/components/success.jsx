@@ -7,7 +7,7 @@ export default function  Success() {
         <div className="SuccessContainer">
             <Typography variant="body1" color="text.secondary">
            Your purchase was successful! </ Typography>
-           <Link to={"/products"}>< SecondaryButton val={'Back to the shopping'}/></Link> 
+           <Link to={"/products"}>< SecondaryButton val={'Back to the products'}/></Link> 
         </div>
       )   
 }
