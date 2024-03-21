@@ -6,13 +6,17 @@ import { Link, useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+//import ImageFull from "../components/imageFull";
 import { FaCartShopping } from "react-icons/fa6";
+import Title from "../components/title";
+import DescriptionFull from "../components/descriptionFull";
+import DiscountedPrice from "../components/discountedPrice";
+import Discount from "../components/discount";
+import Price from "../components/price";
+import SecondaryButton from "../components/secondaryButton";
 
 export default function Details() {
   const [product, setProduct] = useState({});
-//   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
 
   const { id } = useParams();
@@ -22,23 +26,22 @@ export default function Details() {
     async function getProduct() {
       try {
         const response = await fetch(API_URL);
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
         const result = await response.json();
         const APIdata = result.data;
-        console.log(APIdata)
+        console.log(APIdata);
         setProduct(APIdata);
       } catch (err) {
         setError("Sorry, something went wrong");
       }
     }
     getProduct();
-  });
+  }, [API_URL]);
+
+  const hasDiscount = product.discountedPrice;
 
   return (
     <div className="ProductContainer">
-      { error ? (
+      {error ? (
         <Link to="/products">
           <Button color="error">
             {error} <br />
@@ -48,36 +51,14 @@ export default function Details() {
       ) : (
         <Box sx={{ flexGrow: 1, p: 6 }}>
           <Grid container spacing={6}>
-            <Card key={id} sx={{ maxWidth: 800, p: 6, m:5 }}>
-            <CardMedia
-                          sx={{ height: 400 }}
-                     image src={product.image}
-                        //   title={product.image.alt}
-                        />
+            <Card key={id} sx={{ maxWidth: 800, p: 6, m: 5 }}>
+           {/* < ImageFull val={product.image.url} /> */}
               <CardContent>
-                <Typography gutterBottom color="#404040" variant="h4" component="div">
-                  {product.title}
-                </Typography>
-               <Typography variant="body1" color="text.secondary">
-                  {product.description}
-                </Typography>
-                <Typography
-                  sx={{ mt: 2 }}
-                  gutterBottom
-                  variant="h6"
-                  color="text.secondary"
-                >
-                  {product.price}
-                </Typography>
-              <Typography
-                  sx={{ mt: 2 }}
-                  gutterBottom
-                  variant="h6"
-                  color="text.secondary"
-                >
-                 Only now!!! {product.discountedPrice}
-                </Typography>
-             {/*   <Typography
+                <Title val={product.title} />
+                <DescriptionFull val={product.description}/>
+               { hasDiscount ? <><DiscountedPrice val={product.discountedPrice} /> < Discount val={product.price - product.discountedPrice}  /></> : < Price val={product.price} /> }
+
+                {/*   <Typography
                   sx={{ mt: 2 }}
                   gutterBottom
                   variant="h6"
@@ -89,15 +70,13 @@ export default function Details() {
               <CardActions>
                 <div className="ButtonContainer">
                   <Link to={"/products"}>
-                    <Button variant="outlined" color="secondary" sx={{ mr: 2 }}>
-                      Back to the products
-                    </Button>
+                    <SecondaryButton val={"Back to the products"} />
                   </Link>
                   <Button variant="contained" color="secondary">
-                  <FaCartShopping size={15} /> Add to Cart
-                    </Button>
+                    <FaCartShopping size={15} /> Add to Cart
+                  </Button>
                 </div>
-              </CardActions> 
+              </CardActions>
             </Card>
           </Grid>
         </Box>

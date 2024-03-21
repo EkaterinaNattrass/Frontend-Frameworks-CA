@@ -26,7 +26,6 @@ function App() {
           <Route path="products/:id" element={<Details />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
-          <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
