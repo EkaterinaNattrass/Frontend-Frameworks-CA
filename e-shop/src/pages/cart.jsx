@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   return (
@@ -42,9 +43,9 @@ export default function Cart() {
                 Sum :
               </Typography>
               <NavLink to="/checkout">
-                <Button variant="contained" color="secondary" sx={{ m: 5 }}>
+               <Link to={'/checkout'} ><Button variant="contained" color="secondary" sx={{ m: 5 }}>
                   Checkout
-                </Button>
+                </Button></Link>
               </NavLink>
             </CardContent>
           </Card>

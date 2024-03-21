@@ -5,7 +5,6 @@ import Products from "./pages/products";
 import Details from "./pages/details";
 import Cart from "./pages/cart";
 import Checkout from "./pages/checkout";
-import NoPage from "./pages/nopage";
 import "./App.css";
 /* import Header from "./components/header";
 import Footer from "./components/footer"; */

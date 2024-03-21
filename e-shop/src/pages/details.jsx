@@ -52,11 +52,18 @@ export default function Details() {
         <Box sx={{ flexGrow: 1, p: 6 }}>
           <Grid container spacing={6}>
             <Card key={id} sx={{ maxWidth: 800, p: 6, m: 5 }}>
-           {/* < ImageFull val={product.image.url} /> */}
+              {/* < ImageFull val={product.image.url} /> */}
               <CardContent>
                 <Title val={product.title} />
-                <DescriptionFull val={product.description}/>
-               { hasDiscount ? <><DiscountedPrice val={product.discountedPrice} /> < Discount val={product.price - product.discountedPrice}  /></> : < Price val={product.price} /> }
+                <DescriptionFull val={product.description} />
+                {hasDiscount ? (
+                  <>
+                    <DiscountedPrice val={product.discountedPrice} />{" "}
+                    <Discount val={product.price - product.discountedPrice} />
+                  </>
+                ) : (
+                  <Price val={product.price} />
+                )}
 
                 {/*   <Typography
                   sx={{ mt: 2 }}
@@ -71,10 +78,15 @@ export default function Details() {
                 <div className="ButtonContainer">
                   <Link to={"/products"}>
                     <SecondaryButton val={"Back to the products"} />
-                  </Link>
-                  <Button variant="contained" color="secondary">
-                    <FaCartShopping size={15} /> Add to Cart
-                  </Button>
+                  </Link><Button variant="contained" color="secondary">
+                      <FaCartShopping size={15} /> Add to Cart
+                    </Button>
+                    <div>
+                      <Link to={"/cart"}>
+                    < SecondaryButton val={<FaCartShopping size={15}/>}/>
+                  </Link> 
+                    </div>
+                 
                 </div>
               </CardActions>
             </Card>
