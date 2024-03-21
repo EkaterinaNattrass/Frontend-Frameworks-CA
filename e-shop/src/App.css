@@ -4,7 +4,7 @@
 
 header {
     padding: 5px;
-    height: 50px;
+    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -36,7 +36,7 @@ footer {
 .HomePage {
     background-image: url(../public/items.jpg);
     background-size: cover;
-    height: 100vh;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

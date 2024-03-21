@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import PrimaryButton from "../components/primaryButton";
 import '../App.css';
 
 export default function Home() {
@@ -11,9 +11,9 @@ export default function Home() {
           Find Everything, Anytime, Anywhere
         </Typography>
         <Link to="/products">
-          <Button size="large" variant="outlined" color="secondary">
-            Browse Products
-          </Button>
+          <PrimaryButton 
+           val={'Browse Products'} 
+          />
         </Link>
       </div>
     </>
