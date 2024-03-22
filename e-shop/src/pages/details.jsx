@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
+import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
@@ -14,6 +15,7 @@ import DiscountedPrice from "../components/discountedPrice";
 import Discount from "../components/discount";
 import Price from "../components/price";
 import SecondaryButton from "../components/secondaryButton";
+import Rating from "@mui/material/Rating";
 
 export default function Details() {
   const [product, setProduct] = useState({});
@@ -28,7 +30,6 @@ export default function Details() {
         const response = await fetch(API_URL);
         const result = await response.json();
         const APIdata = result.data;
-        console.log(APIdata);
         setProduct(APIdata);
       } catch (err) {
         setError("Sorry, something went wrong");
@@ -38,9 +39,9 @@ export default function Details() {
   }, []);
 
   const hasDiscount = product.discountedPrice;
-  //console.log(product.image.url);
-  console.log(product);
-  
+  const reviews = product.reviews;
+  console.log(reviews);
+
   return (
     <div className="ProductContainer">
       {error ? (
@@ -54,7 +55,7 @@ export default function Details() {
         <Box sx={{ flexGrow: 1, p: 6 }}>
           <Grid container spacing={6}>
             <Card key={id} sx={{ maxWidth: 800, p: 6, m: 5 }}>
-               < ImageFull val={product.image?.url} />
+              <ImageFull val={product.image?.url} />
               <CardContent>
                 <Title val={product.title} />
                 <DescriptionFull val={product.description} />
@@ -66,15 +67,20 @@ export default function Details() {
                 ) : (
                   <Price val={product.price} />
                 )}
-
-                {/*   <Typography
-                  sx={{ mt: 2 }}
-                  gutterBottom
-                  variant="h6"
-                  color="text.secondary"
-                >
-                 {product.reviews}
-                </Typography> */}
+                {reviews?.map((review) => (
+                  <>
+                    <Typography
+                      sx={{ mt: 2 }}
+                      gutterBottom
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {review.description} - {review.username}
+                    </Typography>
+                    <Typography component="legend"></Typography>
+                    <Rating name="read-only" value={review.rating} readOnly />
+                  </>
+                ))}
               </CardContent>
               <CardActions>
                 <div className="ButtonContainer">
