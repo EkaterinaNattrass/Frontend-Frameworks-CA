@@ -38,7 +38,8 @@ export default function Details() {
     getProduct();
   }, []);
 
-  const hasDiscount = product.discountedPrice;
+  // const hasDiscount = product.discountedPrice;
+  console.log(product);
   const reviews = product.reviews;
   console.log(reviews);
 
@@ -59,10 +60,12 @@ export default function Details() {
               <CardContent>
                 <Title val={product.title} />
                 <DescriptionFull val={product.description} />
-                {hasDiscount ? (
+                {product.price !== product.discountedPrice ? (
                   <>
-                    <DiscountedPrice val={product.discountedPrice} />{" "}
-                    <Discount val={product.price - product.discountedPrice} />
+                    <DiscountedPrice val={product.discountedPrice} />
+                    <Discount
+                      val={Math.round(product.price - product.discountedPrice)}
+                    />
                   </>
                 ) : (
                   <Price val={product.price} />
